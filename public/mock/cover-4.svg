@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#07080a"/>
+    <stop offset="0.55" stop-color="#121621"/>
+    <stop offset="1" stop-color="#07080a"/>
+  </linearGradient>
+  <radialGradient id="orbA" cx="0.25" cy="0.25" r="0.65">
+    <stop offset="0" stop-color="#FFB830" stop-opacity="0.6"/>
+    <stop offset="1" stop-color="#FFB830" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="orbB" cx="0.8" cy="0.7" r="0.6">
+    <stop offset="0" stop-color="#FF5733" stop-opacity="0.55"/>
+    <stop offset="1" stop-color="#FF5733" stop-opacity="0"/>
+  </radialGradient>
+  <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+  </pattern>
+</defs>
+<rect width="1200" height="675" fill="url(#bg)"/>
+<rect width="1200" height="675" fill="url(#orbA)"/>
+<rect width="1200" height="675" fill="url(#orbB)"/>
+<rect width="1200" height="675" fill="url(#grid)"/>
+<g stroke="#FFB830" stroke-width="2" fill="none" opacity="0.75">
+  <circle cx="864" cy="283.5" r="110"/>
+  <circle cx="864" cy="283.5" r="74" stroke="#FF5733"/>
+  <line x1="660" y1="283.5" x2="1068" y2="283.5" stroke-opacity="0.4"/>
+  <line x1="864" y1="108" x2="864" y2="459.00000000000006" stroke-opacity="0.4"/>
+</g>
+<rect x="72" y="72" width="140" height="32" rx="6" fill="#FFB830"/>
+<text x="142" y="93" text-anchor="middle" font-family="monospace" font-weight="700" font-size="15" fill="#07080a">BUILD // 04</text>
+</svg>
