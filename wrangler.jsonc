@@ -2,6 +2,9 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "asdevi-web",
   "compatibility_date": "2026-10-28",
+  "build": {
+    "command": "npm run build:cloudflare"
+  },
   "assets": {
     "directory": "./out",
     "not_found_handling": "404-page"

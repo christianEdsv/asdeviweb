@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/build-static.mjs",
     "build:cloudflare": "node scripts/build-static.mjs",
+    "build:server": "next build",
     "start": "next start",
     "lint": "eslint"
   },
