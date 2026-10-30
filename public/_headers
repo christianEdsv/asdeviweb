@@ -1,0 +1,11 @@
+/*
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  X-DNS-Prefetch-Control: on
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+
+/studio/*
+  X-Frame-Options: SAMEORIGIN
+  X-Robots-Tag: noindex, nofollow

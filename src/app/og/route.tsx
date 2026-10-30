@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 import { siteConfig } from "@/config/site";
 
+export const dynamic = "force-static";
 export const contentType = "image/png";
 
 /** Imagen Open Graph por defecto (1200 × 630). */

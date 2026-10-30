@@ -20,6 +20,7 @@ export const revalidate = 3600;
 
 export async function generateStaticParams() {
   const entries = await getMemberSlugs();
+  if (entries.length === 0) return [{ slug: "proximamente" }];
   return entries.map(({ slug }) => ({ slug }));
 }
 

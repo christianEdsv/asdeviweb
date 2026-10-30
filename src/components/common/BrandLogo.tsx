@@ -14,6 +14,8 @@ interface BrandLogoProps {
  * - Modo Oscuro: silueta en Blanco Hielo (#F5F8FC) con cruceta y botones en
  *   Dorado (#FFD500) y Amarillo Mikado (#FDC500).
  */
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export function BrandLogo({ className, priority = false }: BrandLogoProps) {
   return (
     <span
@@ -23,7 +25,7 @@ export function BrandLogo({ className, priority = false }: BrandLogoProps) {
       )}
     >
       <Image
-        src="/logo-light.png"
+        src={`${basePath}/logo-light.png`}
         alt={`Logo de ${siteConfig.name}`}
         width={1024}
         height={850}
@@ -31,7 +33,7 @@ export function BrandLogo({ className, priority = false }: BrandLogoProps) {
         className="logo-light-img h-full w-auto object-contain"
       />
       <Image
-        src="/logo-dark.png"
+        src={`${basePath}/logo-dark.png`}
         alt={`Logo de ${siteConfig.name}`}
         width={1024}
         height={850}

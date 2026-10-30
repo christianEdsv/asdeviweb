@@ -17,7 +17,7 @@ export async function generateStaticParams() {
   const params: { cat: string; n: string }[] = [];
   for (const category of POST_CATEGORIES) {
     const count = entries.filter((item) => item.category === category.value).length;
-    const totalPages = Math.ceil(count / POSTS_PER_PAGE);
+    const totalPages = Math.max(2, Math.ceil(count / POSTS_PER_PAGE));
     for (let page = 2; page <= totalPages; page += 1) {
       params.push({ cat: category.value, n: String(page) });
     }

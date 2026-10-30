@@ -3,6 +3,7 @@ import { absoluteUrl } from "@/config/site";
 import { getEventSlugs, getMemberSlugs, getPostSlugs } from "@/data";
 import { POST_CATEGORIES } from "@/lib/taxonomies";
 
+export const dynamic = "force-static";
 export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

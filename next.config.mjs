@@ -1,5 +1,10 @@
 // @ts-check
 const isDev = process.env.NODE_ENV !== "production";
+const isStaticExport =
+  process.env.GITHUB_PAGES === "true" ||
+  process.env.CF_PAGES === "1" ||
+  process.env.STATIC_EXPORT === "true";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const sanityProjectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 
 /**
@@ -48,7 +53,15 @@ const siteCsp = [
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  ...(isStaticExport
+    ? {
+        output: "export",
+        trailingSlash: true,
+        basePath,
+      }
+    : {}),
   images: {
+    unoptimized: isStaticExport,
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
@@ -58,29 +71,33 @@ const nextConfig = {
       },
     ],
   },
-  async headers() {
-    return [
-      {
-        // Sitio público: todo excepto /studio
-        source: "/((?!studio).*)",
-        headers: [
-          ...baseSecurityHeaders,
-          { key: "X-Frame-Options", value: "DENY" },
-          { key: "Content-Security-Policy", value: siteCsp },
-        ],
-      },
-      {
-        // Sanity Studio: necesita su propio origen, workers y websockets;
-        // se mantiene protegido contra clickjacking externo.
-        source: "/studio/:path*",
-        headers: [
-          ...baseSecurityHeaders,
-          { key: "X-Frame-Options", value: "SAMEORIGIN" },
-          { key: "X-Robots-Tag", value: "noindex, nofollow" },
-        ],
-      },
-    ];
-  },
+  ...(!isStaticExport
+    ? {
+        async headers() {
+          return [
+            {
+              // Sitio público: todo excepto /studio
+              source: "/((?!studio).*)",
+              headers: [
+                ...baseSecurityHeaders,
+                { key: "X-Frame-Options", value: "DENY" },
+                { key: "Content-Security-Policy", value: siteCsp },
+              ],
+            },
+            {
+              // Sanity Studio: necesita su propio origen, workers y websockets;
+              // se mantiene protegido contra clickjacking externo.
+              source: "/studio/:path*",
+              headers: [
+                ...baseSecurityHeaders,
+                { key: "X-Frame-Options", value: "SAMEORIGIN" },
+                { key: "X-Robots-Tag", value: "noindex, nofollow" },
+              ],
+            },
+          ];
+        },
+      }
+    : {}),
 };
 
 export default nextConfig;

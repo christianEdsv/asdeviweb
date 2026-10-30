@@ -8,7 +8,7 @@ export const revalidate = 3600;
 
 export async function generateStaticParams() {
   const entries = await getPostSlugs();
-  const totalPages = Math.ceil(entries.length / POSTS_PER_PAGE);
+  const totalPages = Math.max(2, Math.ceil(entries.length / POSTS_PER_PAGE));
   const params: { n: string }[] = [];
   for (let page = 2; page <= totalPages; page += 1) {
     params.push({ n: String(page) });

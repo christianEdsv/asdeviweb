@@ -24,8 +24,14 @@ export function urlFor(source: SanityImageSource) {
  * - Imágenes de Sanity: `auto('format')` para servir webp/avif cuando el
  *   navegador lo soporta, respetando recorte y hotspot definidos en el Studio.
  */
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export function resolveImageSrc(image: CmsImage): string | null {
-  if (image.mockSrc) return image.mockSrc;
+  if (image.mockSrc) {
+    return image.mockSrc.startsWith("/")
+      ? `${basePath}${image.mockSrc}`
+      : image.mockSrc;
+  }
   if (!image.asset?._ref) return null;
   return urlFor(image as unknown as SanityImageSource)
     .width(MAX_SOURCE_WIDTH)
