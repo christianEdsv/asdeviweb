@@ -7,6 +7,19 @@ const apiRouteDir = path.join(root, "src", "app", "api", "revalidate");
 const backupDir = path.join(root, ".revalidate-route-backup");
 const nextBin = path.join(root, "node_modules", "next", "dist", "bin", "next");
 
+const HEADERS_CONTENT = `/*
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  X-DNS-Prefetch-Control: on
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+
+/studio/*
+  X-Frame-Options: SAMEORIGIN
+  X-Robots-Tag: noindex, nofollow
+`;
+
 let moved = false;
 
 try {
@@ -38,6 +51,11 @@ try {
 
   if (result.status !== 0) {
     process.exitCode = result.status ?? 1;
+  } else {
+    const outDir = path.join(root, "out");
+    if (fs.existsSync(outDir)) {
+      fs.writeFileSync(path.join(outDir, "_headers"), HEADERS_CONTENT, "utf8");
+    }
   }
 } finally {
   if (moved && fs.existsSync(backupDir)) {
