@@ -25,6 +25,7 @@ export const siteSettingsType = defineType({
       title: "Correo oficial",
       type: "string",
       group: "contact",
+      initialValue: "contacto@asdevi.com",
       validation: (Rule) => Rule.required().email(),
     }),
     defineField({

@@ -20,7 +20,8 @@ interface FooterProps {
 }
 
 export function Footer({ settings }: FooterProps) {
-  const { email, socials } = settings;
+  const { socials } = settings;
+  const email = siteConfig.email;
   const socialItems = [
     { key: "discord", label: "Discord", href: socials.discord, Icon: DiscordIcon },
     { key: "x", label: "X (Twitter)", href: socials.x, Icon: XIcon },
