@@ -10,17 +10,17 @@ export const siteConfig = {
   tagline: "Conectamos talento. Impulsamos industria.",
   description:
     "Asociación de Desarrolladores de Videojuegos: conectamos estudios indie, desarrolladores independientes y aliados académicos para fortalecer la industria de El Salvador.",
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.asdevi.com").replace(
     /\/$/,
     "",
   ),
   locale: "es",
-  ogLocale: "es_ES",
-  timeZone: "America/Mexico_City",
+  ogLocale: "es_SV",
+  timeZone: "America/El_Salvador",
   foundingYear: 2026,
-  email: "contacto@asdevi.org",
-  ogImage: "/og-default.svg",
-  logo: "/logo.svg",
+  email: "contacto@asdevi.com",
+  ogImage: "/og",
+  logo: "/logo-light.png",
   socials: {
     discord: "https://discord.gg/asdevi",
     x: "https://x.com/asdevi",
